@@ -41,11 +41,6 @@
                                     <a href="{{ route('companies.show', $company->id) }}" class="btn btn-primary">view</a>
                                     <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-warning">Edit</a>
                                     <a href="{{ route('companies.destroy', $company->id) }}" class="btn btn-danger">Delete</a>
-                                    {{-- <form action="{{ route('companies.destroy', $company->id) }}" method="POST" style="display: inline-block;">
-                                        {{ csrf_field() }}
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this company?')">Delete</button>
-                                    </form> --}}
                                 </td>
                             </tr>
                             @endforeach

@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('companies.update') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            {{-- @method('PUT') --}}
+                            
                              <input id="company_id" type="hidden" class="form-control" name="company_id" value="{{ old('id', $companies->id) }}">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

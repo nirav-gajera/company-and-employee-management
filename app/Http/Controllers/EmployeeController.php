@@ -22,7 +22,6 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        //dd('qwerty');
         $companies = \App\Companies::all();
         return view('employees.create', compact('companies'));
     }
@@ -80,7 +79,6 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
-        // dd($id);
         $employees = \App\Employees::findOrFail($id);
         $employees->delete();
 

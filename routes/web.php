@@ -38,9 +38,6 @@ Route::post('/employees/{employee}/update', 'EmployeeController@update')->name('
 Route::get('/employees/{employee}/destroy', 'EmployeeController@destroy')->name('employees.destroy');
 
 
-// Route::resource('companies', 'CompanyController');
-// Route::resource('employees', 'EmployeeController');
-
 
 Route::get('/', function () {
     return view('welcome');

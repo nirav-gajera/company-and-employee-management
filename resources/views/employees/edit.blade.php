@@ -7,7 +7,6 @@
             <h2>Edit Employee</h2>
             <form action="{{ route('employees.update', $employees->id) }}" method="POST">
                 {{ csrf_field() }}
-                {{-- @method('PUT') --}}
                 <input id="employee_id" type="hidden" class="form-control" name="employee_id" value="{{ old('id', $employees->id) }}">
                 <div class="form-group">
                     <label for="first_name">First Name</label>

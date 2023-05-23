@@ -36,7 +36,6 @@ class CompanyController extends Controller
 
        
         if ($request->hasFile('logo')) {
-            // $path = $request->file('logo')->store('public/logos');
 
             $file = $request->file('logo');
             $file->move(public_path('\logos'), $file->getClientOriginalName());
