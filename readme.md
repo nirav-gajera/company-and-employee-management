@@ -42,6 +42,6 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 9. Use Laravel's validation function, using Request classes
 
-10. Use Laravel's pagination for showing Companies/Employees list, 10 entries per page
+10. Use Laravel's pagination for showing Companies/Employees list, 5 entries per page
  
 11. Use Laravel's starter kit for auth and basic theme, but remove ability to register
