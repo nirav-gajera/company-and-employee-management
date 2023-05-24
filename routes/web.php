@@ -27,7 +27,6 @@ Route::post('/companies/update', 'CompanyController@update')->name('companies.up
 Route::get('/companies/{company}/destroy', 'CompanyController@destroy')->name('companies.destroy');
 Route::get('/companies/search', 'CompanyController@search')->name('companies.search');
 
-
 //employee
 Route::get('/employees', 'EmployeeController@index')->name('employees.index'); 
 Route::get('/employees/create', 'EmployeeController@create')->name('employees.create');
@@ -37,8 +36,7 @@ Route::get('/employees/{employee}/edit', 'EmployeeController@edit')->name('emplo
 Route::post('/employees/{employee}/update', 'EmployeeController@update')->name('employees.update');
 Route::get('/employees/{employee}/destroy', 'EmployeeController@destroy')->name('employees.destroy');
 
-
-
+//home
 Route::get('/', function () {
     return view('welcome');
 });
