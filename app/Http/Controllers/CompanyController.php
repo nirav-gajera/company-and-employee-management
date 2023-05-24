@@ -20,7 +20,6 @@ class CompanyController extends Controller
 
     public function create()
     {
-        //dd('qwert');
         return view('companies.create');
     }
 
