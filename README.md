@@ -768,7 +768,6 @@ This project is open source and available under the MIT License. You are free to
 - **Repository**: nirav-gajera/company-and-employee-management
 - **Language**: PHP (Laravel)
 - **Created**: May 23, 2023
-- **Stars**: ⭐ 2
 - **Topics**: Laravel, PHP, CRUD, Admin Dashboard, Employee Management
 
 ---
