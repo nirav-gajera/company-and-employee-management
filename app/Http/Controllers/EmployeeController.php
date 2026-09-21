@@ -9,7 +9,7 @@ class EmployeeController extends Controller
     public function index()
     {
         if (auth()->check()) {
-            $employees = \App\Employees::paginate(5);
+            $employees = \App\Models\Employees::paginate(5);
 
             return view('employees.index', compact('employees'));
         } else {
@@ -19,7 +19,7 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        $companies = \App\Companies::all();
+        $companies = \App\Models\Companies::all();
 
         return view('employees.create', compact('companies'));
     }
@@ -37,7 +37,7 @@ class EmployeeController extends Controller
 
         // dd($validatedData);
 
-        $employees = \App\Employees::create($validatedData);
+        $employees = \App\Models\Employees::create($validatedData);
 
         return redirect()->route('employees.index', $employees->id)
             ->with('success', 'Employee created  successfully.');
@@ -46,15 +46,15 @@ class EmployeeController extends Controller
     public function show($id)
     {
         // dd($request->all());
-        $employees = \App\Employees::findOrFail($id);
+        $employees = \App\Models\Employees::findOrFail($id);
 
         return view('employees.show', compact('employees'));
     }
 
     public function edit($id)
     {
-        $employees = \App\Employees::findOrFail($id);
-        $companies = \App\Companies::all();
+        $employees = \App\Models\Employees::findOrFail($id);
+        $companies = \App\Models\Companies::all();
 
         return view('employees.edit', compact('employees', 'companies'));
     }
@@ -70,7 +70,7 @@ class EmployeeController extends Controller
             'phone' => 'required|string|max:255',
         ]);
 
-        $employees = \App\Employees::findOrFail($id);
+        $employees = \App\Models\Employees::findOrFail($id);
         $employees->update($validatedData);
 
         return redirect()->route('employees.show', $id)
@@ -79,7 +79,7 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
-        $employees = \App\Employees::findOrFail($id);
+        $employees = \App\Models\Employees::findOrFail($id);
         $employees->delete();
 
         return redirect()->route('employees.index')

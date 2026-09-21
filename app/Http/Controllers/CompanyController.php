@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Companies;
+use App\Models\Companies;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -10,7 +10,7 @@ class CompanyController extends Controller
     public function index()
     {
         if (auth()->check()) {
-            $companies = \App\Companies::paginate(5);
+            $companies = \App\Models\Companies::paginate(5);
 
             return view('companies.index', compact('companies'));
         } else {
@@ -41,7 +41,7 @@ class CompanyController extends Controller
             $validatedData['logo'] = $file->getClientOriginalName();
         }
 
-        $companies = \App\Companies::create($validatedData);
+        $companies = \App\Models\Companies::create($validatedData);
 
         return redirect()->route('companies.index', $companies->id)
             ->with('success', 'Company created successfully.');
@@ -49,14 +49,14 @@ class CompanyController extends Controller
 
     public function show($id)
     {
-        $companies = \App\Companies::findOrFail($id);
+        $companies = \App\Models\Companies::findOrFail($id);
 
         return view('companies.show', compact('companies'));
     }
 
     public function edit($id)
     {
-        $companies = \App\Companies::findOrFail($id);
+        $companies = \App\Models\Companies::findOrFail($id);
 
         return view('companies.edit', compact('companies'));
     }
@@ -90,7 +90,7 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         // dd($id);
-        $companies = \App\Companies::findOrFail($id);
+        $companies = \App\Models\Companies::findOrFail($id);
         $companies->delete();
 
         return redirect()->route('companies.index')
