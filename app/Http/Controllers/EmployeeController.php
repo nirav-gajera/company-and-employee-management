@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
- 
-use App\Http\Model\Employees;
-
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    
     public function index()
     {
         if (auth()->check()) {
             $employees = \App\Employees::paginate(5);
+
             return view('employees.index', compact('employees'));
-        }else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -23,12 +20,13 @@ class EmployeeController extends Controller
     public function create()
     {
         $companies = \App\Companies::all();
+
         return view('employees.create', compact('companies'));
     }
 
     public function store(Request $request)
     {
-        //dd( $request->all());
+        // dd( $request->all());
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -37,7 +35,7 @@ class EmployeeController extends Controller
             'phone' => 'nullable|string',
         ]);
 
-         //dd($validatedData);
+        // dd($validatedData);
 
         $employees = \App\Employees::create($validatedData);
 
@@ -47,21 +45,23 @@ class EmployeeController extends Controller
 
     public function show($id)
     {
-        //dd($request->all());
+        // dd($request->all());
         $employees = \App\Employees::findOrFail($id);
-        return view('employees.show', compact('employees')); 
+
+        return view('employees.show', compact('employees'));
     }
 
     public function edit($id)
     {
         $employees = \App\Employees::findOrFail($id);
         $companies = \App\Companies::all();
+
         return view('employees.edit', compact('employees', 'companies'));
     }
 
     public function update(Request $request, $id)
     {
-        //dd( $request->all());   
+        // dd( $request->all());
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -69,7 +69,7 @@ class EmployeeController extends Controller
             'email' => 'nullable|email|max:255',
             'phone' => 'required|string|max:255',
         ]);
-        
+
         $employees = \App\Employees::findOrFail($id);
         $employees->update($validatedData);
 

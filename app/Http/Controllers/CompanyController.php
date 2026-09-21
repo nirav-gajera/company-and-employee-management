@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Companies;
-
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -11,12 +10,13 @@ class CompanyController extends Controller
     public function index()
     {
         if (auth()->check()) {
-        $companies = \App\Companies::paginate(5);
-        return view('companies.index', compact('companies'));
-    }else {
-        return redirect()->route('login');
+            $companies = \App\Companies::paginate(5);
+
+            return view('companies.index', compact('companies'));
+        } else {
+            return redirect()->route('login');
+        }
     }
-}
 
     public function create()
     {
@@ -24,8 +24,8 @@ class CompanyController extends Controller
     }
 
     public function store(Request $request)
-    {   
-        //dd($request->all);
+    {
+        // dd($request->all);
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
@@ -33,7 +33,6 @@ class CompanyController extends Controller
             'website' => 'nullable|url|max:255',
         ]);
 
-       
         if ($request->hasFile('logo')) {
 
             $file = $request->file('logo');
@@ -51,12 +50,14 @@ class CompanyController extends Controller
     public function show($id)
     {
         $companies = \App\Companies::findOrFail($id);
+
         return view('companies.show', compact('companies'));
     }
 
     public function edit($id)
     {
         $companies = \App\Companies::findOrFail($id);
+
         return view('companies.edit', compact('companies'));
     }
 
@@ -71,7 +72,6 @@ class CompanyController extends Controller
         ]);
 
         $companies = Companies::findOrFail($id);
-
 
         if ($request->hasFile('logo')) {
 
@@ -89,7 +89,7 @@ class CompanyController extends Controller
 
     public function destroy($id)
     {
-        //dd($id);
+        // dd($id);
         $companies = \App\Companies::findOrFail($id);
         $companies->delete();
 
