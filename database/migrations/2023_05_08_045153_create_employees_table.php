@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeesTable extends Migration
 {
@@ -12,8 +12,8 @@ class CreateEmployeesTable extends Migration
      * @return void
      */
     public function up()
-    {   
-        if (!Schema::hasTable('employees')) {
+    {
+        if (! Schema::hasTable('employees')) {
             Schema::create('employees', function (Blueprint $table) {
                 $table->integer('id');
                 $table->string('first_name')->required();
